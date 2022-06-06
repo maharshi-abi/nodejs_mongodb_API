@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const config = require('./app/config');
 
 const app = express();
 
 var corsOptions = {
-  origin: "localhost:8000",
+  origin: "localhost:"+config.port,
 };
 
 app.use(cors(corsOptions));

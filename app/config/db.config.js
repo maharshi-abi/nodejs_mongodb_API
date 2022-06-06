@@ -1,4 +1,5 @@
+const config = require('./index');
+
 module.exports = {
-    url: "mongodb://localhost:27017/netflix"
-  };
-  
+  url: config.mongoUrL
+};

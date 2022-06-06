@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9f4701bd-c22e-4b53-ab30-65f9a77007df",
-		"name": "Netflix",
+		"name": "Netflix_Clone",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14411579"
 	},
@@ -10,53 +10,31 @@
 			"name": "User's Collections",
 			"item": [
 				{
-					"name": "Register User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "John Doe",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "john.doe@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "1234567",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{NetflixHost}}/user",
-							"host": [
-								"{{NetflixHost}}"
-							],
-							"path": [
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "List of Users",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5ZGNhZTc3NDkzNTUzMjk5YjU4YzY2IiwiZW1haWwiOiJqb2huLm1hcmtAZ21haWwuY29tIiwiaWF0IjoxNjU0NTA5MzE4LCJleHAiOjE2NTQ1MTY1MTh9.aLFCvEO_dalxDsgKFzmH06rIR5mgalJdBLzXg7_2Eu0",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": []
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI5ZGNhZTc3NDkzNTUzMjk5YjU4YzY2IiwiZW1haWwiOiJqb2huLm1hcmtAZ21haWwuY29tIiwiaWF0IjoxNjU0NTA5Nzc4LCJleHAiOjE2NTQ1MTY5Nzh9.rHPj6r7ULM-g8Cnxx8r5FBPQ3hLUvkSyjTZyWXLH-fI",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{NetflixHost}}/user",
@@ -74,7 +52,7 @@
 								},
 								{
 									"key": "email",
-									"value": "dan@gmail.com",
+									"value": "mark@gmail.co",
 									"disabled": true
 								}
 							]
@@ -95,13 +73,13 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "{{NetflixHost}}/user/629db371c8993defd084c195",
+							"raw": "{{NetflixHost}}/user/629dcae77493553299b58c66",
 							"host": [
 								"{{NetflixHost}}"
 							],
 							"path": [
 								"user",
-								"629db371c8993defd084c195"
+								"629dcae77493553299b58c66"
 							]
 						}
 					},
@@ -151,6 +129,76 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Mike Doe",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "mike.doe@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234567",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{NetflixHost}}/user",
+					"host": [
+						"{{NetflixHost}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "john.mark@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234567",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{NetflixHost}}/user/login",
+					"host": [
+						"{{NetflixHost}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [

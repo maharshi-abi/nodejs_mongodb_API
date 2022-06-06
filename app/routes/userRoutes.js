@@ -1,5 +1,6 @@
 module.exports = app => {
   const users = require("../controllers/usersController.js");
+  const authMiddleware = require('../middleware/auth');
   var router = require("express").Router();
 
   // For validation
@@ -9,20 +10,23 @@ module.exports = app => {
   } = require('../middleware/validationMiddleware')
   // For validation  
 
-  // Retrieve all users
-  router.get("/", users.findAll);
+  // Create a new user
+  router.post("/login", validate(validation.LoginUser), users.login);
 
   // Create a new user
   router.post("/", validate(validation.AddUser), users.create);
 
+  // Retrieve all users
+  router.get("/", authMiddleware, users.findAll);
+
   // Retrieve a single user with id
-  router.get("/:id", users.findOne);
+  router.get("/:id", authMiddleware, users.findOne);
 
   // Delete a user with id
-  router.delete("/:id", users.delete);
+  router.delete("/:id", authMiddleware, users.delete);
 
   // Create a new user
-  router.delete("/", users.deleteAll);
+  router.delete("/", authMiddleware, users.deleteAll);
 
   app.use("/api/user", router);
 };
