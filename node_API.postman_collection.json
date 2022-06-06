@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "9f4701bd-c22e-4b53-ab30-65f9a77007df",
+		"name": "Netflix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14411579"
+	},
+	"item": [
+		{
+			"name": "User's Collections",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "john.doe@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234567",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{NetflixHost}}/user",
+							"host": [
+								"{{NetflixHost}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{NetflixHost}}/user",
+							"host": [
+								"{{NetflixHost}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "michael",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "dan@gmail.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{NetflixHost}}/user/629db371c8993defd084c195",
+							"host": [
+								"{{NetflixHost}}"
+							],
+							"path": [
+								"user",
+								"629db371c8993defd084c195"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{NetflixHost}}/user/629dae5cd567eb0105572d5e",
+							"host": [
+								"{{NetflixHost}}"
+							],
+							"path": [
+								"user",
+								"629dae5cd567eb0105572d5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove all users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{NetflixHost}}/user",
+							"host": [
+								"{{NetflixHost}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "NetflixURL",
+			"value": "http://localhost:3000/"
+		}
+	]
+}
