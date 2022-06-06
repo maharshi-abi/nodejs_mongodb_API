@@ -2,7 +2,7 @@ const db = require("../models");
 const Users = db.users;
 const bcrypt = require('bcryptjs');
 const config = require('../config');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 var hashedPassword;
 
@@ -14,7 +14,7 @@ exports.login = async (req, res) => {
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
-      const token = jwt.sign({ user_id: user._id, email }, config.JWTSecret, { expiresIn: "2h", });
+      const token = jwt.sign({ user_id: user._id, email }, config.JWTSecret, { expiresIn: config.JWTExpireIn, });
       // save user token
       user.token = token;
       res.status(200).json({ message: "Login Succcessfully", data: user, status: 'success' })
@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
       res.status(200).json({ message: "Invalid credentials! Please try again!.", data: [], status: 'error' })
     }
   } catch (error) {
-    res.status(400).json({ message: error.message, data: user, status: 'error' })
+    res.status(400).json({ message: error.message, data: [], status: 'error' })
   }
 };
 
@@ -50,7 +50,7 @@ exports.create = async (req, res) => {
           .then(user => {
             // Create token
             let email = req.body.email;
-            const token = jwt.sign({ user_id: user._id, email }, config.JWTSecret, { expiresIn: "2h" });
+            const token = jwt.sign({ user_id: user._id, email }, config.JWTSecret, { expiresIn: config.JWTExpireIn });
             userData.token = token;
             // save user token            
 

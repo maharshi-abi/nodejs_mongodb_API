@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
         res.status(403).json({ message: "A token is required for authentication", data: [], status: 'error' })
     }
     try {
-        const decoded = jwt.verify(token, config.JWTSecret);
+        const decoded = jwt.verify(token, config.JWTSecret);        
         req.user = decoded;
     } catch (err) {
         return res.status(401).json({ message: "Invalid Token", data: [], status: 'error' })

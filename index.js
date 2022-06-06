@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/userRoutes")(app);
+require("./app/routes/postRoutes")(app);
 
 // set port, listen for requests
 const PORT = 8000;

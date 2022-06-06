@@ -9,5 +9,6 @@ db.url = dbConfig.url;
 
 // add connected table modal
 db.users = require("./user.model.js")(mongoose);
+db.posts = require("./post.model.js")(mongoose);
 
 module.exports = db;

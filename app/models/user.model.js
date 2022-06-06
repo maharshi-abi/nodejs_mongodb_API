@@ -8,6 +8,9 @@ module.exports = mongoose => {
       password: String,
       status: Boolean,
       token: { type: String },
+      posts: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
+      ]
     },
     { timestamps: true }
   );
@@ -18,7 +21,7 @@ module.exports = mongoose => {
     return object;
   });
 
-  const Users = mongoose.model("user", schema);
+  const Users = mongoose.model("User", schema);
 
   return Users;
 };
